@@ -21,6 +21,10 @@
     Dim TimeS2 As DateTime
     Dim LineZ As Integer = 0
     Dim PaperDate As Date
+    Dim ArrayX1() As String = {}
+    Dim ArrayX2() As String = {}
+    Dim ArrayX3() As Decimal = {}
+    Dim XXX As Int16 = 0
     Dim OldExcel() As Process = Process.GetProcessesByName("Excel")
     Private Sub Form189_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckForIllegalCrossThreadCalls = False
@@ -73,6 +77,9 @@
 
         TimeS1 = DateTimePicker1.Value
         TimeS2 = TimeS1.AddDays(1)
+        'WorkOrder("D5105", 1, "138AD0110011064", "D2302-20040021 AD0110")
+        'XXX = 0
+        'ExtendWorkOrder("138AD0110011064", 1, "D2302-20040021 AD0110")
         mSQLS1.CommandText = "Select scrap.lot, cf01, count(scrap.sn) as t1  from scrap left join scrap_sn on scrap.sn = scrap_sn.sn left join lot on scrap.lot = lot.lot "
         mSQLS1.CommandText += "left join model_station_paravalue as b on b.profilename = 'ERP' and b.model = lot.model and b.station = scrap_sn.updatedstation where scrap.datetime between '"
         mSQLS1.CommandText += TimeS1.ToString("yyyy/MM/dd HH:mm:ss") & "' AND '"
@@ -83,6 +90,7 @@
                 FindTempHeader(mSQLReader.Item("cf01"))
                 StopSign = False
                 WorkOrder(TempHeader, mSQLReader.Item("t1"), mSQLReader.Item("cf01"), mSQLReader.Item("lot"))
+                XXX = 0
                 ExtendWorkOrder(mSQLReader.Item("cf01"), mSQLReader.Item("t1"), mSQLReader.Item("lot"))
                 If oConnection2.State <> ConnectionState.Closed Then
                     oConnection2.Close()
@@ -227,24 +235,63 @@
         oCommander97.Connection = oConnection2
         oCommander97.CommandType = CommandType.Text
         oCommander97.CommandText = "select * from bmb_file full join ima_file on bmb03 = ima01 where bmb01 = '"
-        oCommander97.CommandText += erp1 & "' and bmb05 is NULL and bmb29 = ima910 and bmb19 = 2 order by bmb03"
+        oCommander97.CommandText += erp1 & "' and bmb05 is NULL and bmb29 = ima910 and bmb19 = 2 and ima111 is not null order by bmb03"
         oReader97 = oCommander97.ExecuteReader()
-        If oReader97.HasRows() Then
-            While oReader97.Read()
-                If IsDBNull(oReader97.Item("ima111")) Then
-                    Continue While
-                End If
-                WorkOrder(oReader97.Item("ima111"), quantity, oReader97.Item("bmb03"), sfbud02)
-                'WorkOrder(oReader97.Item("bmb03"), oReader97.Item("bmb01"), quantity)
-                If StopSign = False Then
-                    Call ExtendWorkOrder(oReader97.Item("bmb03"), quantity, sfbud02)
-                End If
-            End While
-        Else
-            StopSign = True
-        End If
+        'If oReader97.HasRows() Then
+        '    While oReader97.Read()
+        '        If IsDBNull(oReader97.Item("ima111")) Then
+        '            Continue While
+        '        End If
+        '        WorkOrder(oReader97.Item("ima111"), quantity, oReader97.Item("bmb03"), sfbud02)
+        '        'WorkOrder(oReader97.Item("bmb03"), oReader97.Item("bmb01"), quantity)
+        '        If StopSign = False Then
+        '            Call ExtendWorkOrder(oReader97.Item("bmb03"), quantity, sfbud02)
+        '        End If
+        '    End While
+        'Else
+        '    'StopSign = True
+        'End If
         'oReader97.Close()
 
+
+        If oReader97.HasRows() Then
+            While oReader97.Read()
+                ReDim Preserve ArrayX1(UBound(ArrayX1, 1) + 1)
+                ArrayX1(UBound(ArrayX1, 1)) = oReader97.Item("bmb03")
+                ReDim Preserve ArrayX2(UBound(ArrayX2, 1) + 1)
+                ArrayX2(UBound(ArrayX2, 1)) = oReader97.Item("ima111")
+               
+            End While
+        Else
+
+        End If
+        oReader97.Close()
+
+        For i As Int16 = XXX To ArrayX1.Length - 1 Step 1
+            If ArrayX1.Length > 0 Then
+                If IsDBNull(ArrayX2(i)) Then
+                    Continue For
+                End If
+                'WorkOrder(ArrayX2(i), quantity, ArrayX1(i), sfbud02)
+                If XXX <= ArrayX1.Length - 1 Then
+                    XXX += 1
+                    Call ExtendWorkOrder(ArrayX1(i), quantity, sfbud02)
+                Else
+                    Exit For
+                End If
+            End If
+            
+        Next
+
+        If ArrayX1.Length > 0 Then
+            For J As Int16 = ArrayX1.Length - 1 To 0 Step -1
+                WorkOrder(ArrayX2(J), quantity, ArrayX1(J), sfbud02)
+                ReDim Preserve ArrayX1(UBound(ArrayX1, 1) - 1)
+                ReDim Preserve ArrayX2(UBound(ArrayX2, 1) - 1)
+            Next
+        End If
+
+        
     End Sub
     Private Sub FindTempHeader(ByVal ima01 As String)
         
