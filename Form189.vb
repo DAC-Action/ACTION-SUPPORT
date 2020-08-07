@@ -83,7 +83,7 @@
         mSQLS1.CommandText = "Select scrap.lot, cf01, count(scrap.sn) as t1  from scrap left join scrap_sn on scrap.sn = scrap_sn.sn left join lot on scrap.lot = lot.lot "
         mSQLS1.CommandText += "left join model_station_paravalue as b on b.profilename = 'ERP' and b.model = lot.model and b.station = scrap_sn.updatedstation where scrap.datetime between '"
         mSQLS1.CommandText += TimeS1.ToString("yyyy/MM/dd HH:mm:ss") & "' AND '"
-        mSQLS1.CommandText += TimeS2.ToString("yyyy/MM/dd HH:mm:ss") & "' and scrap.defect not in ('DJ01','DJ02') group by scrap.lot,cf01"
+        mSQLS1.CommandText += TimeS2.ToString("yyyy/MM/dd HH:mm:ss") & "' and scrap.defect not in ('DJ01','DJ02') and cf01 is not null group by scrap.lot,cf01"
         mSQLReader = mSQLS1.ExecuteReader()
         If mSQLReader.HasRows() Then
             While mSQLReader.Read()
