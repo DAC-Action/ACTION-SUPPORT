@@ -163,6 +163,9 @@ Public Class Form186
                 Record1 = True
                 Exit For    '當月沒資料就離開 (20/01/13 Brady memo)
             End If
+            If ReportType <> 1 And STDCostUSD = 0 Then
+                Continue For
+            End If
             Dim TempDate As Date = Convert.ToDateTime(Year1 & "/" & i & "/01")
             Dim TempDate1 As Date = TempDate.AddMonths(1).AddDays(-1)
             oCommand2.CommandText = " Select (case when tc_prl06 ='USD' then tc_prl03 * tc_prl04 /100 else nvl(Round(tc_prl03 * tc_prl04 /100 * ex1.er / ex2.er,4),0) end) from tc_prl_file  left join exchangeratebyyear ex1 on ex1.year1 = " & Year1 & " and ex1.currency = tc_prl06 "
