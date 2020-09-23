@@ -27,9 +27,10 @@
             MsgBox("处理中，请等待")
             Return
         End If
-        mConnection.ConnectionString = Module1.OpenConnectionOfMes()
+
         If mConnection.State <> ConnectionState.Open Then
             Try
+                mConnection.ConnectionString = Module1.OpenConnectionOfMes()
                 mConnection.Open()
                 mSQLS1.Connection = mConnection
                 mSQLS1.CommandType = CommandType.Text
@@ -41,9 +42,10 @@
                 MsgBox(ex.Message())
             End Try
         End If
-        oConnection.ConnectionString = Module1.OpenOracleConnection("actiontest")
+
         If oConnection.State <> ConnectionState.Open Then
             Try
+                oConnection.ConnectionString = Module1.OpenOracleConnection("actiontest")
                 oConnection.Open()
                 oCommand.Connection = oConnection
                 oCommand.CommandType = CommandType.Text
