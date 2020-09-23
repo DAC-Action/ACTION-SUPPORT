@@ -18,6 +18,7 @@
     Dim oRng As Microsoft.Office.Interop.Excel.Range
     Dim LineZ As Integer = 0
     Dim Sector As Int16 = 0
+    Dim TempDB As String = String.Empty
     'Dim LastStation As String = String.Empty
     'Dim ERPPN As String = String.Empty
     'Dim tModel As String = String.Empty
@@ -60,18 +61,22 @@
         If TS > 0 Then
             TimeS4 = TimeS3.AddDays(TS - 1)
         End If
-        mSQLS2.CommandText = "DELETE ERPSUPPORT.dbo.Form198DB "
+        Sector = Me.ComboBox1.SelectedIndex
+        If Sector = -1 Then
+            MsgBox("请选择工段")
+            Return
+        End If
+
+        TempDB = "F196" & Now.ToString("yyyyMMddHHmmssff")
+        mSQLS2.CommandText = "CREATE TABLE ERPSUPPORT.dbo." & TempDB & " (WorkID nvarchar(5) Not null, WorkName nvarchar(50) Not null, ModelID nvarchar(50) Not null , ERPPN nvarchar(50), WorkDept nvarchar(50), T1 numeric(18, 2), T2 numeric(18, 2), T3 numeric(18, 2)) "
+        'mSQLS2.CommandText = "DELETE ERPSUPPORT.dbo.Form198DB "
         Try
             mSQLS2.ExecuteNonQuery()
         Catch ex As Exception
             MsgBox(ex.Message())
             Return
         End Try
-        Sector = Me.ComboBox1.SelectedIndex
-        If Sector = -1 Then
-            MsgBox("请选择工段")
-            Return
-        End If
+        
         BackgroundWorker1.RunWorkerAsync()
     End Sub
 
@@ -470,7 +475,8 @@
                         Ws.Cells(LineZ, 37) = mSQLReader.Item("t28")
                 End Select
                 
-                mSQLS2.CommandText = "INSERT INTO ERPSUPPORT.dbo.Form198DB VALUES ('" & mSQLReader.Item("c1") & "','" & mSQLReader.Item("name") & "','" & mSQLReader.Item("model") & "','" & mSQLReader.Item("cf01") & "','" & l_Dept & "'," & THour & "," & l_TTS & "," & mSQLReader.Item("t1") & ")"
+                'mSQLS2.CommandText = "INSERT INTO ERPSUPPORT.dbo.Form198DB VALUES ('" & mSQLReader.Item("c1") & "','" & mSQLReader.Item("name") & "','" & mSQLReader.Item("model") & "','" & mSQLReader.Item("cf01") & "','" & l_Dept & "'," & THour & "," & l_TTS & "," & mSQLReader.Item("t1") & ")"
+                mSQLS2.CommandText = "INSERT INTO ERPSUPPORT.dbo." & TempDB & " VALUES ('" & mSQLReader.Item("c1") & "','" & mSQLReader.Item("name") & "','" & mSQLReader.Item("model") & "','" & mSQLReader.Item("cf01") & "','" & l_Dept & "'," & THour & "," & l_TTS & "," & mSQLReader.Item("t1") & ")"
                 Try
                     mSQLS2.ExecuteNonQuery()
                 Catch ex As Exception
@@ -506,7 +512,8 @@
         AdjustExcelFormat2()
         LineZ = 2
 
-        mSQLS1.CommandText = "Select WorkID, WorkName, SUM(T3) as t3, sum(t2) as t2 from ERPSUPPORT.dbo.Form198DB group by Workid, WorkName Order by WorkID "
+        'mSQLS1.CommandText = "Select WorkID, WorkName, SUM(T3) as t3, sum(t2) as t2 from ERPSUPPORT.dbo.Form198DB group by Workid, WorkName Order by WorkID "
+        mSQLS1.CommandText = "Select WorkID, WorkName, SUM(T3) as t3, sum(t2) as t2 from ERPSUPPORT.dbo." & TempDB & " group by Workid, WorkName Order by WorkID "
         mSQLReader = mSQLS1.ExecuteReader
         If mSQLReader.HasRows() Then
             While mSQLReader.Read()
@@ -536,7 +543,8 @@
         AdjustExcelFormat3()
         LineZ = 2
 
-        mSQLS1.CommandText = "Select ModelID, ERPPN, WorkDept, SUM(T3) as t3, sum(t2) as t2 from ERPSUPPORT.dbo.Form198DB group by ModelID, ERPPN, WorkDept Order by ModelID"
+        'mSQLS1.CommandText = "Select ModelID, ERPPN, WorkDept, SUM(T3) as t3, sum(t2) as t2 from ERPSUPPORT.dbo.Form198DB group by ModelID, ERPPN, WorkDept Order by ModelID"
+        mSQLS1.CommandText = "Select ModelID, ERPPN, WorkDept, SUM(T3) as t3, sum(t2) as t2 from ERPSUPPORT.dbo." & TempDB & " group by ModelID, ERPPN, WorkDept Order by ModelID"
         mSQLReader = mSQLS1.ExecuteReader
         If mSQLReader.HasRows() Then
             While mSQLReader.Read()
@@ -559,6 +567,17 @@
 
         oRng = Ws.Range("A1", "F1")
         oRng.EntireColumn.AutoFit()
+
+
+        ' DROP TABLE
+
+        mSQLS1.CommandText = "DROP TABLE ERPSUPPORT.dbo." & TempDB
+        Try
+            mSQLS1.ExecuteNonQuery()
+        Catch ex As Exception
+            'MsgBox(ex.Message())
+            'Return
+        End Try
 
     End Sub
     Private Sub AdjustExcelFormat()
