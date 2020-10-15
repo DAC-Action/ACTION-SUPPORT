@@ -68,7 +68,7 @@
         End If
 
         TempDB = "F196" & Now.ToString("yyyyMMddHHmmssff")
-        mSQLS2.CommandText = "CREATE TABLE ERPSUPPORT.dbo." & TempDB & " (WorkID nvarchar(5) Not null, WorkName nvarchar(50) Not null, ModelID nvarchar(50) Not null , ERPPN nvarchar(50), WorkDept nvarchar(50), T1 numeric(18, 2), T2 numeric(18, 2), T3 numeric(18, 2)) "
+        mSQLS2.CommandText = "CREATE TABLE ERPSUPPORT.dbo." & TempDB & " (WorkID nvarchar(6) Not null, WorkName nvarchar(50) Not null, ModelID nvarchar(50) Not null , ERPPN nvarchar(50), WorkDept nvarchar(50), T1 numeric(18, 2), T2 numeric(18, 2), T3 numeric(18, 2)) "
         'mSQLS2.CommandText = "DELETE ERPSUPPORT.dbo.Form198DB "
         Try
             mSQLS2.ExecuteNonQuery()
@@ -621,7 +621,7 @@
         If empno.StartsWith("0") Then
             empno = Strings.Right(empno, 4)
         End If
-        mSQLS2.CommandText = "Select _DeptName3 from T8eHR.dbo.T_EMP_Employee where EmpCode = '" & empno & "'"
+        mSQLS2.CommandText = "Select isnull(_DeptName3,'NA') from T8eHR.dbo.T_EMP_Employee where EmpCode = '" & empno & "'"
         Dim SS As String = mSQLS2.ExecuteScalar()
         Return SS
     End Function
@@ -630,7 +630,7 @@
         If empno.StartsWith("0") Then
             empno = Strings.Right(empno, 4)
         End If
-        mSQLS2.CommandText = "Select  _zjjj from T8eHR.dbo.T_EMP_Employee where EmpCode = '" & empno & "'"
+        mSQLS2.CommandText = "Select  isnull(_zjjj,'NA') from T8eHR.dbo.T_EMP_Employee where EmpCode = '" & empno & "'"
         Dim SS As String = mSQLS2.ExecuteScalar()
         Return SS
     End Function
@@ -638,8 +638,11 @@
         If empno.StartsWith("0") Then
             empno = Strings.Right(empno, 4)
         End If
-        mSQLS2.CommandText = "Select isnull(sum(s1._gzss ),0) from T8eHR.dbo.T_ATD_AttDaily  s1 left join T8eHR.dbo.T_EMP_Employee  s2 on s1.EmpID = s2.ID where s1.AttDate between '"
-        mSQLS2.CommandText += TimeS3.ToString("yyyy/MM/dd") & "' and '" & TimeS4.ToString("yyyy/MM/dd") & "' and s2.EmpCode = '" & empno & "'"
+        mSQLS2.CommandText = "Select sum(t1) as t1 from ( Select isnull(sum(s1._gzss ),0) as t1 from T8eHR.dbo.T_ATD_AttDaily  s1 left join T8eHR.dbo.T_EMP_Employee  s2 on s1.EmpID = s2.ID where s1.AttDate between '"
+        mSQLS2.CommandText += TimeS3.ToString("yyyy/MM/dd") & "' and '" & TimeS4.ToString("yyyy/MM/dd") & "' and s2.EmpCode = '" & empno & "' "
+        mSQLS2.CommandText += "union all "
+        mSQLS2.CommandText += "Select isnull(sum(s1.WorkingHour4  ),0) from ERPSUPPORT.dbo.HR_Temp_Att s1 where s1.Date1  between '"
+        mSQLS2.CommandText += TimeS3.ToString("yyyy/MM/dd") & "' and '" & TimeS4.ToString("yyyy/MM/dd") & "' and s1.WorkerNo  = '" & empno & "' ) as ac"
         Dim SS As String = mSQLS2.ExecuteScalar()
         Return SS
     End Function
