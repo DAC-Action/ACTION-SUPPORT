@@ -144,7 +144,9 @@ Public Class Form190
                 Dim XXB As Decimal = oCommand2.ExecuteScalar
                 Ws.Cells(LineZ, 18) = XXB
                 ' 最後一次入庫單價
-                oCommand2.CommandText = "Select * from ( Select nvl(Round((rvv38  * pmm42 / rvv35_fac),2),0) as t1 from rvu_file left join rvv_file on rvu01 = rvv01 left join pmm_file on rvv36 = pmm01 "
+                'oCommand2.CommandText = "Select * from ( Select nvl(Round((rvv38  * pmm42 / rvv35_fac),2),0) as t1 from rvu_file left join rvv_file on rvu01 = rvv01 left join pmm_file on rvv36 = pmm01 "
+                'oCommand2.CommandText += "where rvu04 = '" & oReader.Item("pmm09") & "' and rvv31 = '" & oReader.Item("pmn04") & "' and rvuconf = 'Y' and year(rvu03) = " & tDate3.Year & " order by rvu03 desc ) where rownum = 1"
+                oCommand2.CommandText = "Select * from ( Select nvl(Round((rvv38  * er / rvv35_fac),2),0) as t1 from rvu_file left join rvv_file on rvu01 = rvv01 left join pmm_file on rvv36 = pmm01 left join exchangeratebyyear on year1 = " & tDate3.Year & " and currency = pmm22 "
                 oCommand2.CommandText += "where rvu04 = '" & oReader.Item("pmm09") & "' and rvv31 = '" & oReader.Item("pmn04") & "' and rvuconf = 'Y' and year(rvu03) = " & tDate3.Year & " order by rvu03 desc ) where rownum = 1"
                 Dim XXC As Decimal = oCommand2.ExecuteScalar()
                 Ws.Cells(LineZ, 17) = XXC
