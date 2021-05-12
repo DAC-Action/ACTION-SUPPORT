@@ -133,9 +133,12 @@ Public Class Form125
         LineZ += 1
         DoInputData("1124", "1124", 0)
         LineZ += 1
-        DoInputData("122101", "122102", 0)
+        'DoInputData("122101", "122102", 0)
+        DoInputData("122101", "122103", 0)
         LineZ += 5
         DoInputData("151101", "1512", 0)
+        LineZ += 1
+        DoInputData("1524", "1524", 0)
         LineZ += 2
         DoInputData("160101", "160105", 0)
         LineZ += 1
@@ -156,9 +159,11 @@ Public Class Form125
         LineZ += 6
         DoInputData("2001", "2001", 1)
         LineZ += 1
-        DoInputData("220201", "220204", 1)
+        'DoInputData("220201", "220204", 1)
+        DoInputData("220201", "220206", 1)
         LineZ += 1
-        DoInputData("2203", "2206", 1)
+        'DoInputData("2203", "2206", 1)
+        DoInputData("2203", "2208", 1)
         LineZ += 1
         DoInputData("2211", "2211", 1)
         LineZ += 1
@@ -359,71 +364,72 @@ Public Class Form125
 
         ' 資產第二塊
         Ws.Cells(19, 1) = "Long-Term Investments"
-        Ws.Cells(20, 1) = "Fixed Assets-Net value"
-        Ws.Cells(20, 2) = "=B21-B22-B24"
-        oRng = Ws.Range("B20", "B20")
-        oRng.AutoFill(Destination:=Ws.Range("B20", "Y20"), Type:=xlFillDefault)
-        Ws.Cells(21, 1) = "Fixed Assets"
-        Ws.Cells(22, 1) = "Accumulated Depreciation"
-        Ws.Cells(23, 1) = "Construction in Progress"
-        Ws.Cells(24, 1) = "Fixed assets depreciation reserves"
-        Ws.Cells(25, 1) = "WIP Accumulated Depreciation"
-        Ws.Cells(26, 1) = "Total Fixed Assets"
-        Ws.Cells(26, 2) = "=B20+B23-B25"
-        oRng = Ws.Range("B26", "B26")
-        oRng.AutoFill(Destination:=Ws.Range("B26", "Y26"), Type:=xlFillDefault)
+        Ws.Cells(20, 1) = "Lease Assets_Rental"
+        Ws.Cells(21, 1) = "Fixed Assets-Net value"
+        Ws.Cells(21, 2) = "=B22-B23-B25"
+        oRng = Ws.Range("B21", "B21")
+        oRng.AutoFill(Destination:=Ws.Range("B21", "Y21"), Type:=xlFillDefault)
+        Ws.Cells(22, 1) = "Fixed Assets"
+        Ws.Cells(23, 1) = "Accumulated Depreciation"
+        Ws.Cells(24, 1) = "Construction in Progress"
+        Ws.Cells(25, 1) = "Fixed assets depreciation reserves"
+        Ws.Cells(26, 1) = "WIP Accumulated Depreciation"
+        Ws.Cells(27, 1) = "Total Fixed Assets"
+        Ws.Cells(27, 2) = "=B21+B24-B26"
+        oRng = Ws.Range("B27", "B27")
+        oRng.AutoFill(Destination:=Ws.Range("B27", "Y27"), Type:=xlFillDefault)
 
-        Ws.Cells(19, 3) = "=B19/B$31"
+        Ws.Cells(19, 3) = "=B19/B$32"
         oRng = Ws.Range("C19", "C19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("C19", "C26"), Type:=xlFillDefault)
-        Ws.Cells(19, 5) = "=D19/D$31"
+        oRng.AutoFill(Destination:=Ws.Range("C19", "C27"), Type:=xlFillDefault)
+        Ws.Cells(19, 5) = "=D19/D$32"
         oRng = Ws.Range("E19", "E19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("E19", "E26"), Type:=xlFillDefault)
-        Ws.Cells(19, 7) = "=F19/F$31"
+        oRng.AutoFill(Destination:=Ws.Range("E19", "E27"), Type:=xlFillDefault)
+        Ws.Cells(19, 7) = "=F19/F$32"
         oRng = Ws.Range("G19", "G19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("G19", "G26"), Type:=xlFillDefault)
-        Ws.Cells(19, 9) = "=H19/H$31"
+        oRng.AutoFill(Destination:=Ws.Range("G19", "G27"), Type:=xlFillDefault)
+        Ws.Cells(19, 9) = "=H19/H$32"
         oRng = Ws.Range("I19", "I19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("I19", "I26"), Type:=xlFillDefault)
-        Ws.Cells(19, 11) = "=J19/J$31"
+        oRng.AutoFill(Destination:=Ws.Range("I19", "I27"), Type:=xlFillDefault)
+        Ws.Cells(19, 11) = "=J19/J$32"
         oRng = Ws.Range("K19", "K19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("K19", "K26"), Type:=xlFillDefault)
-        Ws.Cells(19, 13) = "=L19/L$31"
+        oRng.AutoFill(Destination:=Ws.Range("K19", "K27"), Type:=xlFillDefault)
+        Ws.Cells(19, 13) = "=L19/L$32"
         oRng = Ws.Range("M19", "M19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("M19", "M26"), Type:=xlFillDefault)
-        Ws.Cells(19, 15) = "=N19/N$31"
+        oRng.AutoFill(Destination:=Ws.Range("M19", "M27"), Type:=xlFillDefault)
+        Ws.Cells(19, 15) = "=N19/N$32"
         oRng = Ws.Range("O19", "O19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("O19", "O26"), Type:=xlFillDefault)
-        Ws.Cells(19, 17) = "=P19/P$31"
+        oRng.AutoFill(Destination:=Ws.Range("O19", "O27"), Type:=xlFillDefault)
+        Ws.Cells(19, 17) = "=P19/P$32"
         oRng = Ws.Range("Q19", "Q19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("Q19", "Q26"), Type:=xlFillDefault)
+        oRng.AutoFill(Destination:=Ws.Range("Q19", "Q27"), Type:=xlFillDefault)
 
-        Ws.Cells(19, 19) = "=R19/R$31"
+        Ws.Cells(19, 19) = "=R19/R$32"
         oRng = Ws.Range("S19", "S19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("S19", "S26"), Type:=xlFillDefault)
-        Ws.Cells(19, 21) = "=T19/T$31"
+        oRng.AutoFill(Destination:=Ws.Range("S19", "S27"), Type:=xlFillDefault)
+        Ws.Cells(19, 21) = "=T19/T$32"
         oRng = Ws.Range("U19", "U19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("U19", "U26"), Type:=xlFillDefault)
-        Ws.Cells(19, 23) = "=V19/V$31"
+        oRng.AutoFill(Destination:=Ws.Range("U19", "U27"), Type:=xlFillDefault)
+        Ws.Cells(19, 23) = "=V19/V$32"
         oRng = Ws.Range("W19", "W19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("W19", "W26"), Type:=xlFillDefault)
-        Ws.Cells(19, 25) = "=X19/X$31"
+        oRng.AutoFill(Destination:=Ws.Range("W19", "W27"), Type:=xlFillDefault)
+        Ws.Cells(19, 25) = "=X19/X$32"
         oRng = Ws.Range("Y19", "Y19")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("Y19", "Y26"), Type:=xlFillDefault)
+        oRng.AutoFill(Destination:=Ws.Range("Y19", "Y27"), Type:=xlFillDefault)
 
-        oRng = Ws.Range("A19", "Y26")
+        oRng = Ws.Range("A19", "Y27")
         oRng.Borders(xlEdgeLeft).LineStyle = xlContinuous
         oRng.Borders(xlEdgeTop).LineStyle = xlContinuous
         oRng.Borders(xlEdgeBottom).LineStyle = xlContinuous
@@ -433,71 +439,71 @@ Public Class Form125
 
         ' 資產第3塊
 
-        Ws.Cells(28, 1) = "Intangible Assets & Other Assets"
-        Ws.Cells(28, 2) = "=B29+B30"
-        oRng = Ws.Range("B28", "B28")
-        oRng.AutoFill(Destination:=Ws.Range("B28", "Y28"), Type:=xlFillDefault)
-        Ws.Cells(29, 1) = "Intangible Assets"
-        Ws.Cells(30, 1) = "Deferred Expenses"
+        Ws.Cells(29, 1) = "Intangible Assets & Other Assets"
+        Ws.Cells(29, 2) = "=B30+B31"
+        oRng = Ws.Range("B29", "B29")
+        oRng.AutoFill(Destination:=Ws.Range("B29", "Y29"), Type:=xlFillDefault)
+        Ws.Cells(30, 1) = "Intangible Assets"
+        Ws.Cells(31, 1) = "Deferred Expenses"
         'Ws.Cells(29, 2) = "=B27-B28"
-        Ws.Cells(31, 1) = "Total Assets"
+        Ws.Cells(32, 1) = "Total Assets"
         'oRng = Ws.Range("B29", "B29")
         'oRng.AutoFill(Destination:=Ws.Range("B29", "Y29"), Type:=xlFillDefault)
-        Ws.Cells(31, 2) = "=B16+B19+B26+B28"
-        oRng = Ws.Range("B31", "B31")
-        oRng.AutoFill(Destination:=Ws.Range("B31", "Y31"), Type:=xlFillDefault)
+        Ws.Cells(32, 2) = "=B16+B19+B27+B29+B20"
+        oRng = Ws.Range("B32", "B32")
+        oRng.AutoFill(Destination:=Ws.Range("B32", "Y32"), Type:=xlFillDefault)
 
-        Ws.Cells(28, 3) = "=B28/B$31"
-        oRng = Ws.Range("C28", "C28")
+        Ws.Cells(29, 3) = "=B29/B$32"
+        oRng = Ws.Range("C29", "C29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("C28", "C31"), Type:=xlFillDefault)
-        Ws.Cells(28, 5) = "=D28/D$31"
-        oRng = Ws.Range("E28", "E28")
+        oRng.AutoFill(Destination:=Ws.Range("C29", "C32"), Type:=xlFillDefault)
+        Ws.Cells(29, 5) = "=D29/D$32"
+        oRng = Ws.Range("E29", "E29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("E28", "E31"), Type:=xlFillDefault)
-        Ws.Cells(28, 7) = "=F28/F$31"
-        oRng = Ws.Range("G28", "G28")
+        oRng.AutoFill(Destination:=Ws.Range("E29", "E32"), Type:=xlFillDefault)
+        Ws.Cells(29, 7) = "=F29/F$32"
+        oRng = Ws.Range("G29", "G29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("G28", "G31"), Type:=xlFillDefault)
-        Ws.Cells(28, 9) = "=H28/H$31"
-        oRng = Ws.Range("I28", "I28")
+        oRng.AutoFill(Destination:=Ws.Range("G29", "G32"), Type:=xlFillDefault)
+        Ws.Cells(29, 9) = "=H29/H$32"
+        oRng = Ws.Range("I29", "I29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("I28", "I31"), Type:=xlFillDefault)
-        Ws.Cells(28, 11) = "=J28/J$31"
-        oRng = Ws.Range("K28", "K28")
+        oRng.AutoFill(Destination:=Ws.Range("I29", "I32"), Type:=xlFillDefault)
+        Ws.Cells(29, 11) = "=J29/J$32"
+        oRng = Ws.Range("K29", "K29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("K28", "K31"), Type:=xlFillDefault)
-        Ws.Cells(28, 13) = "=L28/L$31"
-        oRng = Ws.Range("M28", "M28")
+        oRng.AutoFill(Destination:=Ws.Range("K29", "K32"), Type:=xlFillDefault)
+        Ws.Cells(29, 13) = "=L29/L$32"
+        oRng = Ws.Range("M29", "M29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("M28", "M31"), Type:=xlFillDefault)
-        Ws.Cells(28, 15) = "=N28/N$31"
-        oRng = Ws.Range("O28", "O28")
+        oRng.AutoFill(Destination:=Ws.Range("M29", "M32"), Type:=xlFillDefault)
+        Ws.Cells(29, 15) = "=N29/N$32"
+        oRng = Ws.Range("O29", "O29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("O28", "O31"), Type:=xlFillDefault)
-        Ws.Cells(28, 17) = "=P28/P$31"
-        oRng = Ws.Range("Q28", "Q28")
+        oRng.AutoFill(Destination:=Ws.Range("O29", "O32"), Type:=xlFillDefault)
+        Ws.Cells(29, 17) = "=P29/P$32"
+        oRng = Ws.Range("Q29", "Q29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("Q28", "Q31"), Type:=xlFillDefault)
+        oRng.AutoFill(Destination:=Ws.Range("Q29", "Q32"), Type:=xlFillDefault)
 
-        Ws.Cells(28, 19) = "=R28/R$31"
-        oRng = Ws.Range("S28", "S28")
+        Ws.Cells(29, 19) = "=R29/R$32"
+        oRng = Ws.Range("S29", "S29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("S28", "S31"), Type:=xlFillDefault)
-        Ws.Cells(28, 21) = "=T28/T$31"
-        oRng = Ws.Range("U28", "U28")
+        oRng.AutoFill(Destination:=Ws.Range("S29", "S32"), Type:=xlFillDefault)
+        Ws.Cells(29, 21) = "=T29/T$32"
+        oRng = Ws.Range("U29", "U29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("U28", "U31"), Type:=xlFillDefault)
-        Ws.Cells(28, 23) = "=V28/V$31"
-        oRng = Ws.Range("W28", "W28")
+        oRng.AutoFill(Destination:=Ws.Range("U29", "U32"), Type:=xlFillDefault)
+        Ws.Cells(29, 23) = "=V29/V$32"
+        oRng = Ws.Range("W29", "W29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("W28", "W31"), Type:=xlFillDefault)
-        Ws.Cells(28, 25) = "=X28/X$31"
-        oRng = Ws.Range("Y28", "Y28")
+        oRng.AutoFill(Destination:=Ws.Range("W29", "W32"), Type:=xlFillDefault)
+        Ws.Cells(29, 25) = "=X29/X$32"
+        oRng = Ws.Range("Y29", "Y29")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("Y28", "Y31"), Type:=xlFillDefault)
+        oRng.AutoFill(Destination:=Ws.Range("Y29", "Y32"), Type:=xlFillDefault)
 
-        oRng = Ws.Range("A28", "Y31")
+        oRng = Ws.Range("A29", "Y32")
         oRng.Borders(xlEdgeLeft).LineStyle = xlContinuous
         oRng.Borders(xlEdgeTop).LineStyle = xlContinuous
         oRng.Borders(xlEdgeBottom).LineStyle = xlContinuous
@@ -507,157 +513,157 @@ Public Class Form125
 
         ' 負債和股東權益
 
-        oRng = Ws.Range("A32", "A32")
+        oRng = Ws.Range("A33", "A33")
         oRng.EntireRow.Font.Color = Color.Azure
         oRng.EntireRow.HorizontalAlignment = xlCenter
         Ws.Cells(5, 1) = "Balance Sheet: Assets"
-        oRng = Ws.Range("B32", "Y32")
+        oRng = Ws.Range("B33", "Y33")
         oRng.Merge()
-        Ws.Cells(32, 2) = "Y" & tYear
-        oRng = Ws.Range("A33", "A33")
+        Ws.Cells(33, 2) = "Y" & tYear
+        oRng = Ws.Range("A34", "A34")
         oRng.EntireRow.HorizontalAlignment = xlCenter
-        Ws.Cells(33, 1) = "Year"
+        Ws.Cells(34, 1) = "Year"
         For i As Int16 = 1 To 12 Step 1
             If i < 10 Then
-                Ws.Cells(33, i * 2) = tYear & "/0" & i
+                Ws.Cells(34, i * 2) = tYear & "/0" & i
             Else
-                Ws.Cells(33, i * 2) = tYear & "/" & i
+                Ws.Cells(34, i * 2) = tYear & "/" & i
             End If
-            Ws.Cells(33, i * 2 + 1) = "%"
+            Ws.Cells(34, i * 2 + 1) = "%"
         Next
-        Ws.Cells(34, 1) = "Total Liability & Equity"
-        Ws.Cells(35, 1) = "Current Liability"
-        Ws.Cells(36, 1) = "Short-Term loans"
-        Ws.Cells(37, 1) = "Account Payable"
-        Ws.Cells(38, 1) = "Advances from customers"
-        Ws.Cells(39, 1) = "Accrued Payroll Exp"
-        Ws.Cells(40, 1) = "Tax Payable"
-        Ws.Cells(41, 1) = "Other Payables"
-        Ws.Cells(42, 1) = "Accrued Expenses"
-        Ws.Cells(43, 1) = "Total Current Liability"
+        Ws.Cells(35, 1) = "Total Liability & Equity"
+        Ws.Cells(36, 1) = "Current Liability"
+        Ws.Cells(37, 1) = "Short-Term loans"
+        Ws.Cells(38, 1) = "Account Payable"
+        Ws.Cells(39, 1) = "Advances from customers"
+        Ws.Cells(40, 1) = "Accrued Payroll Exp"
+        Ws.Cells(41, 1) = "Tax Payable"
+        Ws.Cells(42, 1) = "Other Payables"
+        Ws.Cells(43, 1) = "Accrued Expenses"
+        Ws.Cells(44, 1) = "Total Current Liability"
 
-        Ws.Cells(45, 1) = "Long-Term Liability"
-        Ws.Cells(46, 1) = "Other Liability"
-        Ws.Cells(48, 1) = "Total Liability"
-        Ws.Cells(50, 1) = "Shareholders' Equity"
-        Ws.Cells(51, 1) = "Capital"
-        Ws.Cells(52, 1) = "Capital by Investees"
-        Ws.Cells(53, 1) = "Capital Premiun"
-        Ws.Cells(54, 1) = "Exchange Reserve"
-        Ws.Cells(55, 1) = "Profit and Loss-Current year"
-        Ws.Cells(56, 1) = "Profit or loss for prior year"
-        Ws.Cells(58, 1) = "Retained Earnings"
-        Ws.Cells(59, 1) = "Total Shareholders' Equity"
-        Ws.Cells(61, 1) = "Total Liability & Equity"
+        Ws.Cells(46, 1) = "Long-Term Liability"
+        Ws.Cells(47, 1) = "Other Liability"
+        Ws.Cells(49, 1) = "Total Liability"
+        Ws.Cells(51, 1) = "Shareholders' Equity"
+        Ws.Cells(52, 1) = "Capital"
+        Ws.Cells(53, 1) = "Capital by Investees"
+        Ws.Cells(54, 1) = "Capital Premiun"
+        Ws.Cells(55, 1) = "Exchange Reserve"
+        Ws.Cells(56, 1) = "Profit and Loss-Current year"
+        Ws.Cells(57, 1) = "Profit or loss for prior year"
+        Ws.Cells(59, 1) = "Retained Earnings"
+        Ws.Cells(60, 1) = "Total Shareholders' Equity"
+        Ws.Cells(62, 1) = "Total Liability & Equity"
 
-        Ws.Cells(43, 2) = "=SUM(B36:B42)"
-        oRng = Ws.Range("B43", "B43")
-        oRng.AutoFill(Destination:=Ws.Range("B43", "X43"), Type:=xlFillDefault)
-        Ws.Cells(48, 2) = "=SUM(B43:B46)"
-        oRng = Ws.Range("B48", "B48")
-        oRng.AutoFill(Destination:=Ws.Range("B48", "X48"), Type:=xlFillDefault)
+        Ws.Cells(44, 2) = "=SUM(B36:B42)"
+        oRng = Ws.Range("B44", "B44")
+        oRng.AutoFill(Destination:=Ws.Range("B44", "X44"), Type:=xlFillDefault)
+        Ws.Cells(49, 2) = "=SUM(B44:B47)"
+        oRng = Ws.Range("B49", "B49")
+        oRng.AutoFill(Destination:=Ws.Range("B49", "X49"), Type:=xlFillDefault)
         'Ws.Cells(55, 2) = "=B57-B54"
         'oRng = Ws.Range("B55", "B55")
         'oRng.AutoFill(Destination:=Ws.Range("B55", "X55"), Type:=xlFillDefault)
-        Ws.Cells(58, 2) = "=B55+B56"
-        oRng = Ws.Range("B58", "B58")
-        oRng.AutoFill(Destination:=Ws.Range("B58", "X58"), Type:=xlFillDefault)
-        Ws.Cells(59, 2) = "=SUM(B51:B56)"
+        Ws.Cells(59, 2) = "=B56+B57"
         oRng = Ws.Range("B59", "B59")
         oRng.AutoFill(Destination:=Ws.Range("B59", "X59"), Type:=xlFillDefault)
-        Ws.Cells(61, 2) = "=B48+B59"
-        oRng = Ws.Range("B61", "B61")
-        oRng.AutoFill(Destination:=Ws.Range("B61", "X61"), Type:=xlFillDefault)
+        Ws.Cells(60, 2) = "=SUM(B52:B57)"
+        oRng = Ws.Range("B60", "B60")
+        oRng.AutoFill(Destination:=Ws.Range("B60", "X60"), Type:=xlFillDefault)
+        Ws.Cells(62, 2) = "=B49+B60"
+        oRng = Ws.Range("B62", "B62")
+        oRng.AutoFill(Destination:=Ws.Range("B62", "X62"), Type:=xlFillDefault)
 
-        Ws.Cells(36, 3) = "=B36/B$61"
-        oRng = Ws.Range("C36", "C36")
+        Ws.Cells(37, 3) = "=B37/B$62"
+        oRng = Ws.Range("C37", "C37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("C36", "C61"), Type:=xlFillDefault)
-        Ws.Cells(36, 5) = "=D36/D$61"
-        oRng = Ws.Range("E36", "E36")
+        oRng.AutoFill(Destination:=Ws.Range("C37", "C62"), Type:=xlFillDefault)
+        Ws.Cells(37, 5) = "=D37/D$62"
+        oRng = Ws.Range("E37", "E37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("E36", "E61"), Type:=xlFillDefault)
-        Ws.Cells(36, 7) = "=F36/F$61"
-        oRng = Ws.Range("G36", "G36")
+        oRng.AutoFill(Destination:=Ws.Range("E37", "E62"), Type:=xlFillDefault)
+        Ws.Cells(37, 7) = "=F37/F$62"
+        oRng = Ws.Range("G37", "G37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("G36", "G61"), Type:=xlFillDefault)
-        Ws.Cells(36, 9) = "=H36/H$61"
-        oRng = Ws.Range("I36", "I36")
+        oRng.AutoFill(Destination:=Ws.Range("G37", "G62"), Type:=xlFillDefault)
+        Ws.Cells(37, 9) = "=H37/H$62"
+        oRng = Ws.Range("I37", "I37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("I36", "I61"), Type:=xlFillDefault)
-        Ws.Cells(36, 11) = "=J36/J$61"
-        oRng = Ws.Range("K36", "K36")
+        oRng.AutoFill(Destination:=Ws.Range("I37", "I62"), Type:=xlFillDefault)
+        Ws.Cells(37, 11) = "=J37/J$62"
+        oRng = Ws.Range("K37", "K37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("K36", "K61"), Type:=xlFillDefault)
-        Ws.Cells(36, 13) = "=L36/L$61"
-        oRng = Ws.Range("M36", "M36")
+        oRng.AutoFill(Destination:=Ws.Range("K37", "K62"), Type:=xlFillDefault)
+        Ws.Cells(37, 13) = "=L37/L$62"
+        oRng = Ws.Range("M37", "M37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("M36", "M61"), Type:=xlFillDefault)
-        Ws.Cells(36, 15) = "=N36/N$61"
-        oRng = Ws.Range("O36", "O36")
+        oRng.AutoFill(Destination:=Ws.Range("M37", "M62"), Type:=xlFillDefault)
+        Ws.Cells(37, 15) = "=N37/N$62"
+        oRng = Ws.Range("O37", "O37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("O36", "O61"), Type:=xlFillDefault)
-        Ws.Cells(36, 17) = "=P36/P$61"
-        oRng = Ws.Range("Q36", "Q36")
+        oRng.AutoFill(Destination:=Ws.Range("O37", "O62"), Type:=xlFillDefault)
+        Ws.Cells(37, 17) = "=P37/P$62"
+        oRng = Ws.Range("Q37", "Q37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("Q36", "Q61"), Type:=xlFillDefault)
+        oRng.AutoFill(Destination:=Ws.Range("Q37", "Q62"), Type:=xlFillDefault)
 
-        Ws.Cells(36, 19) = "=R36/R$61"
-        oRng = Ws.Range("S36", "S36")
+        Ws.Cells(37, 19) = "=R37/R$62"
+        oRng = Ws.Range("S37", "S37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("S36", "S61"), Type:=xlFillDefault)
-        Ws.Cells(36, 21) = "=T36/T$61"
-        oRng = Ws.Range("U36", "U36")
+        oRng.AutoFill(Destination:=Ws.Range("S37", "S62"), Type:=xlFillDefault)
+        Ws.Cells(37, 21) = "=T37/T$62"
+        oRng = Ws.Range("U37", "U37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("U36", "U61"), Type:=xlFillDefault)
-        Ws.Cells(36, 23) = "=V36/V$61"
-        oRng = Ws.Range("W36", "W36")
+        oRng.AutoFill(Destination:=Ws.Range("U37", "U62"), Type:=xlFillDefault)
+        Ws.Cells(37, 23) = "=V37/V$62"
+        oRng = Ws.Range("W37", "W37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("W36", "W61"), Type:=xlFillDefault)
-        Ws.Cells(36, 25) = "=X36/X$61"
-        oRng = Ws.Range("Y36", "Y36")
+        oRng.AutoFill(Destination:=Ws.Range("W37", "W62"), Type:=xlFillDefault)
+        Ws.Cells(37, 25) = "=X37/X$62"
+        oRng = Ws.Range("Y37", "Y37")
         oRng.NumberFormat = "0.00%"
-        oRng.AutoFill(Destination:=Ws.Range("Y36", "Y61"), Type:=xlFillDefault)
+        oRng.AutoFill(Destination:=Ws.Range("Y37", "Y62"), Type:=xlFillDefault)
 
 
         ' 清除
-        oRng = Ws.Range("C44", "Y44")
+        oRng = Ws.Range("C45", "Y45")
         oRng.ClearContents()
-        oRng = Ws.Range("C47", "Y47")
+        oRng = Ws.Range("C48", "Y48")
         oRng.ClearContents()
-        oRng = Ws.Range("C49", "Y50")
+        oRng = Ws.Range("C50", "Y51")
         oRng.ClearContents()
-        oRng = Ws.Range("C57", "Y57")
+        oRng = Ws.Range("C58", "Y58")
         oRng.ClearContents()
-        oRng = Ws.Range("C60", "Y60")
+        oRng = Ws.Range("C61", "Y61")
         oRng.ClearContents()
 
-        oRng = Ws.Range("B36", "B61")
+        oRng = Ws.Range("B37", "B62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("D36", "D61")
+        oRng = Ws.Range("D37", "D62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("F36", "F61")
+        oRng = Ws.Range("F37", "F62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("H36", "H61")
+        oRng = Ws.Range("H37", "H62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("J36", "J61")
+        oRng = Ws.Range("J37", "J62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("L36", "L61")
+        oRng = Ws.Range("L37", "L62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("N36", "N61")
+        oRng = Ws.Range("N37", "N62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("P36", "P61")
+        oRng = Ws.Range("P37", "P62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("R36", "R61")
+        oRng = Ws.Range("R37", "R62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("T36", "T61")
+        oRng = Ws.Range("T37", "T62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("V36", "V61")
+        oRng = Ws.Range("V37", "V62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
-        oRng = Ws.Range("X36", "X61")
+        oRng = Ws.Range("X37", "X62")
         oRng.NumberFormat = "#,##0;[Red]#,##0"
 
-        oRng = Ws.Range("A32", "Y43")
+        oRng = Ws.Range("A33", "Y44")
         oRng.Borders(xlEdgeLeft).LineStyle = xlContinuous
         oRng.Borders(xlEdgeTop).LineStyle = xlContinuous
         oRng.Borders(xlEdgeBottom).LineStyle = xlContinuous
@@ -665,7 +671,7 @@ Public Class Form125
         oRng.Borders(xlInsideHorizontal).LineStyle = xlContinuous
         oRng.Borders(xlInsideVertical).LineStyle = xlContinuous
 
-        oRng = Ws.Range("A45", "Y46")
+        oRng = Ws.Range("A46", "Y47")
         oRng.Borders(xlEdgeLeft).LineStyle = xlContinuous
         oRng.Borders(xlEdgeTop).LineStyle = xlContinuous
         oRng.Borders(xlEdgeBottom).LineStyle = xlContinuous
@@ -673,7 +679,7 @@ Public Class Form125
         oRng.Borders(xlInsideHorizontal).LineStyle = xlContinuous
         oRng.Borders(xlInsideVertical).LineStyle = xlContinuous
 
-        oRng = Ws.Range("A48", "Y48")
+        oRng = Ws.Range("A49", "Y49")
         oRng.Borders(xlEdgeLeft).LineStyle = xlContinuous
         oRng.Borders(xlEdgeTop).LineStyle = xlContinuous
         oRng.Borders(xlEdgeBottom).LineStyle = xlContinuous
@@ -681,7 +687,7 @@ Public Class Form125
         oRng.Borders(xlInsideHorizontal).LineStyle = xlContinuous
         oRng.Borders(xlInsideVertical).LineStyle = xlContinuous
 
-        oRng = Ws.Range("A50", "Y56")
+        oRng = Ws.Range("A51", "Y57")
         oRng.Borders(xlEdgeLeft).LineStyle = xlContinuous
         oRng.Borders(xlEdgeTop).LineStyle = xlContinuous
         oRng.Borders(xlEdgeBottom).LineStyle = xlContinuous
@@ -689,7 +695,7 @@ Public Class Form125
         oRng.Borders(xlInsideHorizontal).LineStyle = xlContinuous
         oRng.Borders(xlInsideVertical).LineStyle = xlContinuous
 
-        oRng = Ws.Range("A58", "Y59")
+        oRng = Ws.Range("A59", "Y60")
         oRng.Borders(xlEdgeLeft).LineStyle = xlContinuous
         oRng.Borders(xlEdgeTop).LineStyle = xlContinuous
         oRng.Borders(xlEdgeBottom).LineStyle = xlContinuous
@@ -697,7 +703,7 @@ Public Class Form125
         oRng.Borders(xlInsideHorizontal).LineStyle = xlContinuous
         oRng.Borders(xlInsideVertical).LineStyle = xlContinuous
 
-        oRng = Ws.Range("A61", "Y61")
+        oRng = Ws.Range("A62", "Y62")
         oRng.Borders(xlEdgeLeft).LineStyle = xlContinuous
         oRng.Borders(xlEdgeTop).LineStyle = xlContinuous
         oRng.Borders(xlEdgeBottom).LineStyle = xlContinuous
@@ -717,7 +723,7 @@ Public Class Form125
         For i As Int16 = 1 To tMonth Step 1
             oCommand.CommandText += "(case when aah03 = " & i & " then (aah05 - aah04) else 0 end ) as t" & i & ","
         Next
-        oCommand.CommandText += "(case when aah03 = 0 then round((aah05 - aah04),3) else 0 end ) as s1 from aah_file,aag_file where aah01 = aag01 and aag07 in ('2','3') and aah02 = " & tYear & " and aah03 <= " & tMonth & " and aah01 between '" & ACC1 & "' and '" & ACC2 & "' )"
+        oCommand.CommandText += "(case when aah03 = 0 then round((aah05 - aah04),3) else 0 end ) as s1 from aah_file,aag_file where aah00 =aag00 and aah01 = aag01 and aag07 in ('2','3') and aah02 = " & tYear & " and aah03 <= " & tMonth & " and aah01 between '" & ACC1 & "' and '" & ACC2 & "' )"
 
 
         oReader = oCommand.ExecuteReader()
@@ -765,7 +771,7 @@ Public Class Form125
         For i As Int16 = 1 To tMonth Step 1
             oCommand.CommandText += "(case when aah03 = " & i & " then (aah05 - aah04) else 0 end ) as t" & i & ","
         Next
-        oCommand.CommandText += "(case when aah03 = 0 then round((aah05 - aah04),3) else 0 end ) as s1 from aah_file,aag_file where aah01 = aag01 and aag07 in ('2','3') and aah02 = " & tYear & " and aah03 <= " & tMonth & " and aah01 in (" & ACC1 & " ) )"
+        oCommand.CommandText += "(case when aah03 = 0 then round((aah05 - aah04),3) else 0 end ) as s1 from aah_file,aag_file where aah00 =aag00  and aah01 = aag01 and aag07 in ('2','3') and aah02 = " & tYear & " and aah03 <= " & tMonth & " and aah01 in (" & ACC1 & " ) )"
 
         oReader = oCommand.ExecuteReader()
         If oReader.HasRows Then
@@ -838,13 +844,13 @@ Public Class Form125
         For i As Int16 = 1 To tMonth Step 1
             oCommand.CommandText += "(case when aah03 = " & i & " then (aah05 - aah04) else 0 end ) as t" & i & ","
         Next
-        oCommand.CommandText += "(case when aah03 = 0 then round((aah05 - aah04),3) else 0 end ) as s1 from aah_file,aag_file where aah01 = aag01 and aag07 in ('2','3') and aah02 = " & tYear & " and aah03 <= " & tMonth & " and aah01 = '" & ACC1 & "' "
+        oCommand.CommandText += "(case when aah03 = 0 then round((aah05 - aah04),3) else 0 end ) as s1 from aah_file,aag_file where aah00 =aag00  and aah01 = aag01 and aag07 in ('2','3') and aah02 = " & tYear & " and aah03 <= " & tMonth & " and aah01 = '" & ACC1 & "' "
         oCommand.CommandText += "union all "
         oCommand.CommandText += "select "
         For i As Int16 = 1 To tMonth Step 1
             oCommand.CommandText += "(case when aah03 = " & i & " then (aah05 - aah04)  else 0 end ) as t" & i & ","
         Next
-        oCommand.CommandText += "(case when aah03 = 0 then round((aah05 - aah04) ,3) else 0 end ) as s1 from aah_file,aag_file where aah01 = aag01 and aag07 in ('2','3') and aah02 = " & tYear & " and aah03 <= " & tMonth & " and aah01 = '" & ACC2 & "') "
+        oCommand.CommandText += "(case when aah03 = 0 then round((aah05 - aah04) ,3) else 0 end ) as s1 from aah_file,aag_file where aah00 =aag00 and aah01 = aag01 and aag07 in ('2','3') and aah02 = " & tYear & " and aah03 <= " & tMonth & " and aah01 = '" & ACC2 & "') "
 
 
         oReader = oCommand.ExecuteReader()
